@@ -19,12 +19,12 @@ public abstract class Unite {
         this.id = id;
     }
 
-    public int getHealthPoint() {
+    public int getHitPoint() {
         return hitPoint;
     }
 
-    public void setHealthPoint(int healthPoint) {
-        this.hitPoint = healthPoint;
+    public void setHitPoint(int hitPoint) {
+        this.hitPoint = hitPoint;
     }
 
     public int getCountOr() {
