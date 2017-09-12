@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:tiles="http://www.thymeleaf.org">
+<head>
+    <title>Welcome</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/ie10-viewport-bug-workaround.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="css/start.css" />
+    <script src="js/ie-emulation-modes-warning.js"></script>
+</head>
+<body>
+
+
+<!--/*@thymesVar id="joueur" type="entities"*/-->
+<form action="#" th:action="@{/start}" th:object="${joueur}" method="post">
+    <div class="form-group">
+        <label for="userName">userName</label>
+        <input type="text" id="userName" placeholder="Name"/>
+    </div>
+    <input type="submit">Start Playing!!</input>
+</form>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/ie10-viewport-bug-workaround.js"></script>
+</body>
+</html>
