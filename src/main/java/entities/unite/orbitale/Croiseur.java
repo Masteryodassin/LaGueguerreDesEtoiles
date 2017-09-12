@@ -1,4 +1,6 @@
 package entities.unite.orbitale;
 
-public class Croiseur {
+import entities.unite.defense.IUniteAttaquante;
+
+public class Croiseur extends UniteOrbitale implements IUniteAttaquante{
 }

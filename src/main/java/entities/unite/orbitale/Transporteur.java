@@ -1,4 +1,4 @@
 package entities.unite.orbitale;
 
-public class Transporteur {
+public class Transporteur extends UniteOrbitale{
 }

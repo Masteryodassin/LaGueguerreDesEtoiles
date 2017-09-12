@@ -1,20 +1,12 @@
 package entities.unite.orbitale;
 
-public abstract class UniteOrbitale {
+import entities.unite.Unite;
 
-    private int id;
+public abstract class UniteOrbitale extends Unite {
+
     private int coordX;
     private int coordY;
-
-
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
+    private int vitesse;
 
     public int getCoordX() {
         return coordX;
@@ -40,5 +32,4 @@ public abstract class UniteOrbitale {
         this.vitesse = vitesse;
     }
 
-    private int vitesse;
 }

@@ -1,4 +1,6 @@
 package entities.unite.orbitale;
 
-public class Chasseur {
+import entities.unite.defense.IUniteAttaquante;
+
+public class Chasseur extends UniteOrbitale implements IUniteAttaquante{
 }

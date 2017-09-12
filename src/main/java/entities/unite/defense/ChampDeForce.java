@@ -1,4 +1,6 @@
 package entities.unite.defense;
 
-public class ChampDeForce {
+import entities.unite.Unite;
+
+public class ChampDeForce extends Unite {
 }

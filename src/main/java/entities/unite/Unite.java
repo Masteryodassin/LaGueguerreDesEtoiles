@@ -3,7 +3,7 @@ package entities.unite;
 public abstract class Unite {
 
     private int id;
-    private int healthPoint;
+    private int hitPoint;
     private int countOr;
     private int countFer;
     private int countPlutonium;
@@ -20,11 +20,11 @@ public abstract class Unite {
     }
 
     public int getHealthPoint() {
-        return healthPoint;
+        return hitPoint;
     }
 
     public void setHealthPoint(int healthPoint) {
-        this.healthPoint = healthPoint;
+        this.hitPoint = healthPoint;
     }
 
     public int getCountOr() {

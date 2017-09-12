@@ -1,4 +1,7 @@
 package entities.unite.resource.production;
 
-public class ChantierSpatial {
+import entities.unite.Unite;
+
+public class ChantierSpatial extends Unite {
+
 }

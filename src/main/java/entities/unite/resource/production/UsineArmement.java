@@ -1,4 +1,6 @@
 package entities.unite.resource.production;
 
-public class UsineArmement {
+import entities.unite.Unite;
+
+public class UsineArmement extends Unite {
 }

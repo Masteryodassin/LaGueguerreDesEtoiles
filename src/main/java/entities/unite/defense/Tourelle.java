@@ -1,4 +1,6 @@
 package entities.unite.defense;
 
-public class Tourelle {
+import entities.unite.Unite;
+
+public class Tourelle extends Unite implements IUniteAttaquante{
 }

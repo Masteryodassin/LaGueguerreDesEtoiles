@@ -22,14 +22,6 @@
     </properties>
 
     <dependencies>
-
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok-maven</artifactId>
-            <version>1.16.18.1</version>
-            <type>pom</type>
-        </dependency>
-
     <dependency>
         <groupId>org.apache.cxf</groupId>
         <artifactId>cxf-spring-boot-starter-jaxrs</artifactId>

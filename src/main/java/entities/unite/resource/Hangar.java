@@ -1,4 +1,6 @@
 package entities.unite.resource;
 
-public class Hangar {
+import entities.unite.Unite;
+
+public class Hangar extends Unite {
 }
