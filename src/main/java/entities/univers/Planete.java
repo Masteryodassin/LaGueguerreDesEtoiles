@@ -3,24 +3,125 @@ package entities.univers;
 
 import entities.unite.Unite;
 import entities.unite.orbitale.UniteOrbitale;
+import entities.unite.resource.Hangar;
+import entities.unite.resource.production.ChantierSpatial;
+import entities.unite.resource.production.UsineArmement;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
 public class Planete {
 
+
     private int id;
     private int playerId;
+    private int planetSize;
     private int coordx;
     private int coordy;
     private int fer;
     private int or;
     private int plutonium;
-    private boolean occuped;
+    private boolean occupied;
     private boolean champForce;
     List<Unite> unites;
     List<UniteOrbitale> unitesOrbitales;
 
+    public Planete(){
+
+    }
+
+    // vérifie qu'il reste de l'espace disponible sur la planète
+
+    public boolean hasRoom(){
+
+        if (unites.size() >= planetSize){
+            return false;
+        }
+        return true;
+    }
+
+    // vérifie qu'il y a assez d'or en stock sur la planète
+
+    public boolean enoughGold(Unite unite){
+        return false;
+    }
+
+
+    public boolean hasChantierSpatial(boolean b){
+        b = false;
+        for (Unite unite : unites
+             ) {
+            if (unite.getClass() == ChantierSpatial.class){
+                b = true;
+            }
+
+        }
+        return b;
+    }
+
+    public boolean hasUsineArmement(boolean b){
+        b = false;
+        for (Unite unite : unites
+                ) {
+            if (unite.getClass() == UsineArmement.class){
+                b = true;
+            }
+
+        }
+        return b;
+    }
+
+    //calcule les stocks d'or cumulés sur l'ensemble des hangars de la planète
+
+    private Integer currentGoldStock(){
+        int a = 0;
+        List<Hangar> hangars = new ArrayList<>();
+        for (Unite unite: unites
+                ) {
+            if (unite.getClass() == Hangar.class){
+                hangars.add((Hangar)unite);
+            }
+        }
+        for (int i = 0 ; i < hangars.size(); i++){
+            a = a + hangars.get(i).getStockOr();
+        }
+        return a;
+    }
+
+    //calcule les stocks de fer cumulés sur l'ensemble des hangars de la planète
+
+    private Integer currentIronStock(){
+        int a = 0;
+        List<Hangar> hangars = new ArrayList<>();
+        for (Unite unite: unites
+                ) {
+            if (unite.getClass() == Hangar.class){
+                hangars.add((Hangar)unite);
+            }
+        }
+        for (int i = 0 ; i < hangars.size(); i++){
+            a = a + hangars.get(i).getStockFer();
+        }
+        return a;
+    }
+
+    //calcule les stocks de plutonium cumulés sur l'ensemble des hangars de la planète
+
+    private Integer currentPlutoniumStock(){
+        int a = 0;
+        List<Hangar> hangars = new ArrayList<>();
+        for (Unite unite: unites
+                ) {
+            if (unite.getClass() == Hangar.class){
+                hangars.add((Hangar)unite);
+            }
+        }
+        for (int i = 0 ; i < hangars.size(); i++){
+            a = a + hangars.get(i).getStockPlutonium();
+        }
+        return a;
+    }
 
     public int getId() {
         return id;
@@ -79,11 +180,11 @@ public class Planete {
     }
 
     public boolean isOccuped() {
-        return occuped;
+        return occupied;
     }
 
-    public void setOccuped(boolean occuped) {
-        this.occuped = occuped;
+    public void setOccuped(boolean occupied) {
+        this.occupied = occupied;
     }
 
     public boolean isChampForce() {
@@ -108,6 +209,14 @@ public class Planete {
 
     public void setUnitesOrbitales(List<UniteOrbitale> unitesOrbitales) {
         this.unitesOrbitales = unitesOrbitales;
+    }
+
+    public int getPlanetSize() {
+        return planetSize;
+    }
+
+    public void setPlanetSize(int planetSize) {
+        this.planetSize = planetSize;
     }
 
 }
