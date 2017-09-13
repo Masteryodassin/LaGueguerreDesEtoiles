@@ -18,19 +18,6 @@ public class StartService {
 
 
 
-    public Univers startGame(){
-        for (Planete planete: createUniverse().getPlanetes()
-             ) {
-            if(createPlayer("").getId()  == planete.getPlayerId()){
-                List<Planete> planetesJoueur = new ArrayList<>();
-                planetesJoueur.add(planete);
-        }
-           
-        }
-
-        return null;
-    }
-
     public Univers createUniverse(){
         List<Planete> planetes = new ArrayList<>();
         Univers univers = new Univers(planetes);

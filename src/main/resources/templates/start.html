@@ -13,11 +13,11 @@
 <body>
 
 
-<!--/*@thymesVar id="joueur" type="entities"*/-->
-<form action="#" th:action="@{/start}" th:object="${joueur}" method="post">
+<!--/*@thymesVar id="userName" type="entities"*/-->
+<form action="#" th:action="@{/start}" method="post">
     <div class="form-group">
         <label for="userName">Nom</label>
-        <input type="text" id="userName" placeholder="Nom"/>
+        <input type="text" id="userName" name="userName" placeholder="Nom" />
         <input class="btn btn-primary" type="submit" value="Submit"/>
     </div>
 

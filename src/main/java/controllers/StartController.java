@@ -1,6 +1,7 @@
 package controllers;
 
 import entities.univers.Joueur;
+import entities.univers.Univers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,6 +20,7 @@ public class StartController {
     private StartService startSevice;
 
     private Joueur joueur;
+    private Univers univers;
 
     @RequestMapping(value= "/start", method = RequestMethod.GET)
     public String form (Model model){
@@ -27,9 +29,11 @@ public class StartController {
 
     @RequestMapping(value = "/start", method = RequestMethod.POST)
     public String startGame (@RequestParam(value= "userName") String userName, Model model, HttpSession session){
-        model.addAttribute("joueur", joueur);
+        univers = startSevice.createUniverse();
         joueur = startSevice.createPlayer(userName);
-         session.setAttribute("id", joueur.getId());
+        model.addAttribute("joueur", joueur);
+        model.addAttribute("universe", univers);
+        session.setAttribute("id", joueur.getId());
         return "universe";
     }
 
