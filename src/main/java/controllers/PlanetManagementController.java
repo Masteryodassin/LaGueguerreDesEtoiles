@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 
 @Controller
-public class planetManagementController {
+public class PlanetManagementController {
 
 
     @RequestMapping(value = "/universe/planet", method = RequestMethod.GET)

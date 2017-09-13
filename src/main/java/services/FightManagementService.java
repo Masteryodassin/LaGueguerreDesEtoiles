@@ -3,5 +3,5 @@ package services;
 import org.springframework.stereotype.Service;
 
 @Service
-public class planetManagementService {
+public class FightManagementService {
 }

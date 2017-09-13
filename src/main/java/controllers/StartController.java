@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 
 @Controller
-public class startController {
+public class StartController {
 
     @Autowired
     private StartSevice startSevice;
