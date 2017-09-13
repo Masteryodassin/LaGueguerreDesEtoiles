@@ -21,7 +21,7 @@ public class PlanetService {
 
 
     public List<Planete> getByPlayerId(int id){
-        univers = universMock.univers;
+        this.univers = universMock.univers;
         List<Planete> planetes = new ArrayList<>();
 
 
@@ -33,4 +33,15 @@ public class PlanetService {
         }
         return planetes;
     }
+
+    public Planete getById(int id, Univers univers) {
+        this.univers = univers;
+
+        planete = univers.getPlanetes().stream().
+                filter(p -> planete.getPlayerId() == id).findAny().get();
+
+        return planete;
+    }
+
+
 }
