@@ -16,7 +16,7 @@ public class StartService {
 
     PlanetMock planetMock = new PlanetMock();
 
-    
+
     public Univers createUniverse(){
         List<Planete> planetes = new ArrayList<>();
         planetes.add(planetMock.planete1);
