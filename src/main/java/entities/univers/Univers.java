@@ -7,6 +7,13 @@ public class Univers {
 
     private List<Planete> planetes = new ArrayList<>();
 
+
+    public Univers(List<Planete> planetes) {
+        this.planetes = planetes;
+    }
+
+
+
     public List<Planete> getPlanetes() {
         return planetes;
     }

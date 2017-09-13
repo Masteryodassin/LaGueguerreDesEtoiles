@@ -7,28 +7,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <link href="../css/bootstrap.min.css" rel="stylesheet" />
     <link href="../css/ie10-viewport-bug-workaround.css" rel="stylesheet" />
-    <link rel="stylesheet" type="text/css" href="start.css" />
+    <link rel="stylesheet" type="text/css" href="../css/start.css" />
     <script src="js/ie-emulation-modes-warning.js"></script>
 </head>
-<body style="background-color: cadetblue">
+<body>
 
 
-<<<<<<< HEAD
+<!--/*@thymesVar id="joueur" type="entities"*/-->
 <form action="#" th:action="@{/start}" th:object="${joueur}" method="post">
-=======
-<<<<<<< HEAD
-<form action="#" th:action="@{/start}" th:object="${joueur}" method="post">
-=======
-<form style="display: flex" action="#" th:action="@{/start}" th:object="${joueur}" method="post">
->>>>>>> dev2
->>>>>>> 8921d5c09f59fd3ce94d4070f66bc8b9bc83e525
     <div class="form-group">
         <label for="userName">Nom</label>
         <input type="text" id="userName" placeholder="Nom"/>
+        <input class="btn btn-primary" type="submit" value="Submit"/>
     </div>
-    <input class="btn btn-primary" type="submit" value="Submit"/>
+
 </form>
-<img src="vaisseau.jpg"/>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
