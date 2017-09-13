@@ -11,7 +11,7 @@ public class ChampDeForce extends Unite {
 
         this.setCountFer(Couts.FERCHAMPFORCE);
         this.setCountOr(Couts.ORCHAMPFORCE);
-        this.getCountPlutonium(Couts.PLUTONIUMCHAMPFORCE);
+        this.setCountPlutonium(Couts.PLUTONIUMCHAMPFORCE);
         this.setHitPoint(Constantes.HPCHAMPFORCE);
     }
 

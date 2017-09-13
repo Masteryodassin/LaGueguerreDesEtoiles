@@ -11,7 +11,7 @@ public class ChantierSpatial extends Unite {
         
         this.setCountFer(Couts.FERCHANTIERSPATIAL);
         this.setCountOr(Couts.ORCHANTIERSPATIAL);
-        this.getCountPlutonium(Couts.PLUTONIUMCHANTIERSPATIAL);
+        this.setCountPlutonium(Couts.PLUTONIUMCHANTIERSPATIAL);
         this.setHitPoint(Constantes.HPCHANTIERSPATIAL);
     }
 

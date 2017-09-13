@@ -16,6 +16,7 @@ public class Tourelle extends Unite implements IUniteAttaquante{
         this.setCountOr(Couts.ORTOURELLE);
         this.setCountPlutonium(Couts.PLUTONIUMTOURELLE);
         this.setHitPoint(Constantes.HPTOURELLE);
+        this.setAttaque(Constantes.ATTAQUETOURELLE);
     }
 
     public int getAttaque() {

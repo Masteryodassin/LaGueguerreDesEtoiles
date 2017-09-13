@@ -11,7 +11,7 @@ public class UsineArmement extends Unite {
 
         this.setCountFer(Couts.FERUSINEARMEMENT);
         this.setCountOr(Couts.ORUSINEARMEMENT);
-        this.getCountPlutonium(Couts.PLUTONIUMUSINEARMEMENT);
+        this.setCountPlutonium(Couts.PLUTONIUMUSINEARMEMENT);
         this.setHitPoint(Constantes.HPUSINEARMEMENT);
     }
 }
