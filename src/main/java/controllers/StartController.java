@@ -29,12 +29,16 @@ public class StartController {
 
     @RequestMapping(value = "/start", method = RequestMethod.POST)
     public String startGame (@RequestParam(value= "userName") String userName, Model model, HttpSession session){
+
         univers = startSevice.createUniverse();
         joueur = startSevice.createPlayer(userName);
         model.addAttribute("joueur", joueur);
         model.addAttribute("universe", univers);
         session.setAttribute("id", joueur.getId());
-        return "universe";
+
+
+        String redirect = "redirect: /universe/planet/"+joueur.getId();
+        return redirect;
     }
 
 

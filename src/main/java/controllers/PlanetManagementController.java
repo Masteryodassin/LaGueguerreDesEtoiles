@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class PlanetManagementController {
 
 
-    @RequestMapping(value = "/universe/planet", method = RequestMethod.GET)
+    @RequestMapping(value = "/universe/planet/management", method = RequestMethod.GET)
     public String canBuildUnit (Model model){
         return "planet";
     }
