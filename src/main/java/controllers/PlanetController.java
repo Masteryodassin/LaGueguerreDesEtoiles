@@ -12,7 +12,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class PlanetController {
 
     @RequestMapping(value = "universe/planet/{id}", method = RequestMethod.GET)
-    public String choosePlanet (@PathVariable(value = "JoueurId") int JoueurId){
+    public String choosePlanet (@PathVariable(value = "id") int JoueurId){
+
+
+
         return "planet";
     }
 
