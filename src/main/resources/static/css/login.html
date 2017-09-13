@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:tiles="http://www.thymeleaf.org">
+    <head>
+        <title>Login SlothProject</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+        <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+        <link href="css/bootstrap.min.css" rel="stylesheet" />
+        <link href="css/ie10-viewport-bug-workaround.css" rel="stylesheet" />
+        <link rel="stylesheet" type="text/css" href="css/main.css" />
+        <script src="js/ie-emulation-modes-warning.js"></script>
+    </head>
+    <body>
+        <div class="image" align="center">
+            <img src="fonts/logo_imie.png" />
+        </div>
+
+        <div class="container">
+            <div tiles:fragment="content">
+              <form name="f" th:action="@{/login}" method="POST">
+              
+                  <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                  <fieldset>
+                      <legend>Please Login</legend>
+                      <div th:if="${param_error == true}" class="alert alert-danger" role="alert">
+                        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                        <span class="sr-only">Error:</span>
+                          Username or mail invalid !!!!
+                      </div>
+                      <div th:if="${param_logout}" class="alert alert-info" role="alert"> 
+                        <span class="glyphicon glyphicon-ok_circle" aria-hidden="true"></span>
+                        <span class="sr-only">Info:</span>
+                          You have been logged out.
+                      </div>
+                    <div class="container">
+                      	<label for="username">Nom d'utilisateur</label>
+                      	<div class="container">
+                      	<input type="text" id="username" name="username"/> 
+                      	</div>  
+                      	<label for="password">Mot de passe</label>
+                      	<div class="container">
+                      	<input type="password" id="password" name="password"/>
+                      	</div>
+                      	<br />
+                      	<div class="container form-actions">
+                          <button type="submit" class="btn btn-primary">Se connecter</button>
+                      	</div>  
+                     </div>
+                  </fieldset>
+                     </form>
+            </div>
+        </div>
+        
+         <div class="image" align="center">
+         	<h2>Powered by :</h2>
+            <img src="fonts/sloth_logo.png" />
+        </div>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/ie10-viewport-bug-workaround.js"></script>
+    </body>
+</html>

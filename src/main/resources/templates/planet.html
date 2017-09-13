@@ -8,10 +8,21 @@
     <link href="../css/bootstrap.min.css" rel="stylesheet" />
     <link href="../css/ie10-viewport-bug-workaround.css" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" href="../css/planet.css" />
-    <script src="js/ie-emulation-modes-warning.js"></script>
+    <script src="../js/ie-emulation-modes-warning.js"></script>
 </head>
 <body>
-<p>Hello !</p>
+<p>Hello ! <!--<a th:text="${Joueur.getUsername}"/>--></p>
+
+<div class="container">
+    <table align="center">
+        <tr th:each="Planete : ${planeteList}">
+           <button class = "btn btn-primary btn-block">
+            <td th:text="Planete"></td>
+            <td><a href="" th:text="${Planete.getId()}"></a></td>
+           </button>
+        </tr>
+    </table>
+</div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
