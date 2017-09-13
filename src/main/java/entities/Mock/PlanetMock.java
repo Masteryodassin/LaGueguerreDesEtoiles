@@ -17,7 +17,7 @@ public class PlanetMock {
 
     //génération de deux planètes types
     
-    PlanetMock(){
+    public PlanetMock(){
         
         unites.add(new Hangar());
 

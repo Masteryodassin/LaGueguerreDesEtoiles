@@ -37,7 +37,7 @@ public class StartController {
         session.setAttribute("id", joueur.getId());
 
 
-        String redirect = "redirect: /universe/planet/"+joueur.getId();
+        String redirect = "redirect:universe/planet/"+joueur.getId();
         return redirect;
     }
 
