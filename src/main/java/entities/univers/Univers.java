@@ -7,9 +7,14 @@ public class Univers {
 
     public Univers(){}
 
+    public Univers(List<Planete> planetes) {
+        this.planetes = planetes;
+    }
+
     private List<Joueur> joueurs = new ArrayList<>();
 
     private List<Planete> planetes = new ArrayList<>();
+
 
     /////////////////////////// Getters and Setters /////////////////////////////////
 

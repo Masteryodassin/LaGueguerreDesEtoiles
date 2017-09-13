@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 
 @Controller
-public class ressourcesManagementController {
+public class RessourcesManagementController {
 
     @RequestMapping(value = "/universe/planet", method = RequestMethod.POST)
     public String checkRessources (Model model){

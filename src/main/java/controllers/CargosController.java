@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-public class cargosController {
+public class CargosController {
 
     @RequestMapping(value = "/universe/planet/exploration/cargos", method = RequestMethod.POST)
     public String checkDestination(Model model){

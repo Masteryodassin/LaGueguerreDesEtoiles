@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-public class fightManagementController {
+public class FightManagementController {
 
     @RequestMapping(value = "/universe/planet/exploration/fight", method = RequestMethod.GET)
     public String fight(Model model){
