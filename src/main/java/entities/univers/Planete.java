@@ -27,6 +27,8 @@ public class Planete {
     List<Unite> unites;
     List<UniteOrbitale> unitesOrbitales;
 
+    //constructeur
+
     public Planete(){
 
     }
@@ -44,9 +46,43 @@ public class Planete {
     // vérifie qu'il y a assez d'or en stock sur la planète
 
     public boolean enoughGold(Unite unite){
-        return false;
+        boolean b;
+        if (unite.getCountOr() > currentGoldStock()){
+            b = false;
+        }
+        else{
+            b =true;
+        }
+        return b;
     }
 
+    // vérifie qu'il y a assez de fer en stock sur la planète
+
+    public boolean enoughIron(Unite unite){
+        boolean b;
+        if (unite.getCountFer() > currentIronStock()){
+            b = false;
+        }
+        else{
+            b =true;
+        }
+        return b;
+    }
+
+    // vérifie qu'il y a assez de plutonium en stock sur la planète
+
+    public boolean enoughPlutonium(Unite unite){
+        boolean b;
+        if (unite.getCountPlutonium() > currentPlutoniumStock()){
+            b = false;
+        }
+        else{
+            b =true;
+        }
+        return b;
+    }
+
+    // vérifie qu'il y a au moins un chantier spatial sur la planète
 
     public boolean hasChantierSpatial(boolean b){
         b = false;
@@ -59,6 +95,8 @@ public class Planete {
         }
         return b;
     }
+
+    // vérifie qu'il y a au moins une usine d'armement sur la planète
 
     public boolean hasUsineArmement(boolean b){
         b = false;
@@ -122,6 +160,9 @@ public class Planete {
         }
         return a;
     }
+
+
+    ///////////////////////////// getters and setters ///////////////////////////////
 
     public int getId() {
         return id;
