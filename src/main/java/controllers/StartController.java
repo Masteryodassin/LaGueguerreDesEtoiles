@@ -35,10 +35,11 @@ public class StartController {
         model.addAttribute("joueur", joueur);
         model.addAttribute("universe", univers);
         session.setAttribute("id", joueur.getId());
+        session.setAttribute("joueur", joueur);
 
 
-        String redirect = "redirect:universe/planet/"+joueur.getId();
-        return redirect;
+        return "redirect:universe/planet";
+
     }
 
 
