@@ -16,14 +16,12 @@ public class StartService {
 
     PlanetMock planetMock = new PlanetMock();
 
-
     public Univers createUniverse(){
         List<Planete> planetes = new ArrayList<>();
         planetes.add(planetMock.planete1);
         planetes.add(planetMock.planete2);
         Univers univers = new Univers(planetes);
         return univers;
-
     }
 
     public Joueur createPlayer(String userName){
@@ -31,7 +29,5 @@ public class StartService {
         joueur.setUsername(userName);
         return joueur;
     }
-
-
-    }
+}
 
