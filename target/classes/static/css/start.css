@@ -1,23 +1,47 @@
-<<<<<<< HEAD
 body{
     background-image: url(../fonts/background.jpeg);
-    background-repeat: no-repeat;
-}
-.form-group{
-    display: flex;
-    margin-left: 500px;
-    margin-top: 300px;
-}
-.btn btn-primary{
-    margin-top: 400px;
-    margin-left: 500px;
-=======
-body {
-    background-color:blue;
 }
 
-.form-group{
-    display: flex;
-    margin-top: 300px;
->>>>>>> 198c537b0dc926c733049578b0211db5b76d9312
+#label{
+    margin-left: 500px;
+    margin-top: 200px;
+    font-size: xx-large;
+    color: whitesmoke;
+}
+
+#userName{
+    margin-left: 550px;
+    margin-top: 20px;
+    border-color: whitesmoke;
+    line-height: 1.25;
+    border-radius: .25rem;
+}
+
+#submit{
+    margin-left: 590px;
+    margin-top: 50px;
+}
+.btn {
+    color: black;
+    background-color: whitesmoke;
+    border-color: whitesmoke;
+    display: inline-block;
+    font-weight: 400;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    border: 1px solid transparent;
+    border-top-color: transparent;
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+    border-left-color: transparent;
+    padding: .5rem .75rem;
+    font-size: 1rem;
+    line-height: 1.25;
+    border-radius: .25rem;
+    transition: all .15s ease-in-out;
 }
