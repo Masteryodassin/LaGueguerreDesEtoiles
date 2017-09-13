@@ -9,6 +9,10 @@ public class Joueur {
     private List<Planete> planetes = new ArrayList<>();
     private String username;
 
+    public Joueur(int id) {
+        this.id = id;
+    }
+
     public int getId() {
         return id;
     }

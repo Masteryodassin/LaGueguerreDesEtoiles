@@ -7,13 +7,18 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import services.StartService;
+
+import javax.servlet.http.HttpSession;
 
 
 @Controller
 public class StartController {
 
     @Autowired
-    private StartSevice startSevice;
+    private StartService startSevice;
+
+    private Joueur joueur;
 
     @RequestMapping(value= "/start", method = RequestMethod.GET)
     public String form (Model model){
@@ -21,8 +26,10 @@ public class StartController {
     }
 
     @RequestMapping(value = "/start", method = RequestMethod.POST)
-    public String startGame (@RequestParam(value= "joueur") Joueur joueur, Model model){
+    public String startGame (@RequestParam(value= "userName") String userName, Model model, HttpSession session){
         model.addAttribute("joueur", joueur);
+        joueur = startSevice.createPlayer(userName);
+         session.setAttribute("id", joueur.getId());
         return "universe";
     }
 
