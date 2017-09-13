@@ -13,13 +13,16 @@ public class PlanetMock {
 
     public Planete planete1 = new Planete();
     public Planete planete2 = new Planete();
-    List<Unite> unites = new ArrayList<>();
+    private List<Unite> unites = new ArrayList<>();
+
+    //génération de deux planètes types
     
     PlanetMock(){
         
         unites.add(new Hangar());
 
         planete1.setId(1);
+        planete1.setPlayerId(1);
         planete1.setChampForce(false);
         planete1.setCoordx(2);
         planete1.setCoordx(4);
@@ -34,6 +37,7 @@ public class PlanetMock {
         unites.add(new ChampDeForce());
 
         planete2.setId(2);
+        planete2.setPlayerId(2);
         planete2.setChampForce(true);
         planete2.setCoordx(2);
         planete2.setCoordx(4);
