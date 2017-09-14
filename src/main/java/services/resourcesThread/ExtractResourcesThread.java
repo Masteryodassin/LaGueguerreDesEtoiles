@@ -2,6 +2,7 @@ package services.resourcesThread;
 
 import entities.unite.Unite;
 import entities.unite.resource.Hangar;
+import entities.unite.resource.recolte.MineFer;
 import entities.unite.resource.recolte.MineOr;
 import entities.unite.resource.recolte.UsinePlutonium;
 import entities.univers.Planete;
@@ -31,6 +32,11 @@ public class ExtractResourcesThread <T extends Unite> implements Runnable{
                 System.out.println("unexpected interruption exception");
             }
 
+            if (!this.planete.getUnites().stream()
+                    .anyMatch(u -> Unite.class.equals(MineFer.class))){
+                isFer = false;
+            }
+
             int resourceLeftOver = planete.getFer() - Constantes.RATIOEXTRACTIONFER;
             int resourceExtracted = hangar.getStockFer() + Constantes.RATIOEXTRACTIONFER;
 
@@ -45,17 +51,28 @@ public class ExtractResourcesThread <T extends Unite> implements Runnable{
                 System.out.println("unexpected interruption exception");
             }
 
+            if (!this.planete.getUnites().stream()
+                    .anyMatch(u -> Unite.class.equals(MineOr.class))){
+                isOr = false;
+            }
+
             int resourceLeftOver = planete.getOr() - Constantes.RATIOEXTRACTIONOR;
             int resourceExtracted = hangar.getStockOr() + Constantes.RATIOEXTRACTIONOR;
 
             planete.setOr(resourceLeftOver);
             hangar.setStockOr(resourceExtracted);
         }
+
         while(isPlutonium && planete.getPlutonium() > 0 && hangar.getStockPlutonium() < Constantes.STOCKAGEPLUTONIUM){
             try {
                 Thread.sleep(5000);
             }catch (InterruptedException ie){
                 System.out.println("unexpected interruption exception");
+            }
+
+            if (!this.planete.getUnites().stream()
+                    .anyMatch(u -> Unite.class.equals(MineOr.class))){
+                isPlutonium = false;
             }
 
             int resourceLeftOver = planete.getPlutonium() - Constantes.RATIOEXTRACTIONPLUTONIUM;
@@ -76,8 +93,8 @@ public class ExtractResourcesThread <T extends Unite> implements Runnable{
 
     public void checkResourceType (T item){
 
-        if (item.getClass().equals(MineOr.class)){
-            isOr = true;
+        if (item.getClass().equals(MineFer.class)){
+            isFer = true;
         }
         else if (item.getClass().equals(MineOr.class)){
             isOr = true;

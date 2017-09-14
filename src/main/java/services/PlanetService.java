@@ -2,6 +2,7 @@ package services;
 
 import entities.Mock.PlanetMock;
 import entities.Mock.UniversMock;
+import entities.univers.Joueur;
 import entities.univers.Planete;
 import entities.univers.Univers;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,18 +15,14 @@ import java.util.stream.Collectors;
 @Service
 public class PlanetService {
 
-
-    private Univers univers;
     private Planete planete;
-    private UniversMock universMock = new UniversMock();
 
 
-    public List<Planete> getByPlayerId(int id){
-        this.univers = universMock.univers;
+    public List<Planete> getByPlayerId(int id, Joueur joueur){
         List<Planete> planetes = new ArrayList<>();
 
 
-        for (Planete planete: univers.getPlanetes()
+        for (Planete planete: joueur.getPlanetes()
              ) {
             if (planete.getPlayerId() == id){
                 planetes.add(planete);
@@ -34,10 +31,9 @@ public class PlanetService {
         return planetes;
     }
 
-    public Planete getById(int id, Univers univers) {
-        this.univers = univers;
+    public Planete getById(int id, Joueur joueur) {
 
-        planete = univers.getPlanetes().stream().
+        planete = joueur.getPlanetes().stream().
                 filter(p -> planete.getPlayerId() == id).findAny().get();
 
         return planete;
