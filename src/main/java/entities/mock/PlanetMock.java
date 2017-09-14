@@ -1,4 +1,4 @@
-package entities.Mock;
+package entities.mock;
 
 import entities.unite.Unite;
 import entities.unite.defense.ChampDeForce;

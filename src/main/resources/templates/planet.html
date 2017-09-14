@@ -16,20 +16,12 @@
 <span><p>Hello ! <a th:text="${username}"/></p></span>
 
 <div class="container">
-    <form action="#" th:action="@{/universe/planet}" method="get">
+    <form action="#" th:action="@{/universe/planet}" method="post">
     <table align="center">
         <tr th:each="Planete : ${planeteList}">
-
-            <td></td>
-            <td>
-                <span>
-                    <div class="container">
-                        <p class = "btn btn-primary btn-block" th:href= "${Planete.getId()}" >
-                         Planete: <a th:text=" ${Planete.getId()}" style="color: #FFFFFF"></a>
-                        </p>
-                    </div>
-                </span>
-            </td>
+                <td th:text="Planete"></td>
+                <td><input type ="submit" class = "btn btn-primary" name = "planetId" th:value="${Planete.getId()}" />
+                </td>
         </tr>
     </table>
     </form>

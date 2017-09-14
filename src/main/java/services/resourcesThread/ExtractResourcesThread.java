@@ -86,6 +86,7 @@ public class ExtractResourcesThread <T extends Unite> implements Runnable{
 
     public ExtractResourcesThread (T item, Planete planete, Hangar hangar) {
         checkResourceType(item);
+        this.mineType = item;
         this.planete = planete;
         this.hangar = hangar;
 

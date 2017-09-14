@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import services.PlanetService;
 
 import javax.servlet.http.HttpSession;
@@ -30,8 +31,8 @@ public class PlanetController {
     }
 
 
-    @RequestMapping(value = "universe/{id}",method = RequestMethod.GET)
-    public String getPlanetId (Model model, HttpSession session, @PathVariable("id") int planetId){
+    @RequestMapping(value = "universe/planet",method = RequestMethod.POST)
+    public String getPlanetId (Model model, HttpSession session, @RequestParam("planetId") int planetId){
         session.setAttribute("planetId",planetId);
 
         String redirect = "redirect:planet/planetManagement";

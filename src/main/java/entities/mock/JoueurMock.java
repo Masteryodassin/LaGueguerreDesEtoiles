@@ -1,4 +1,4 @@
-package entities.Mock;
+package entities.mock;
 
 import entities.univers.Joueur;
 import entities.univers.Planete;

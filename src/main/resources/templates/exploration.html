@@ -6,26 +6,37 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <link rel="stylesheet"
-          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
     <link rel="stylesheet"
-          href="http://getbootstrap.com/examples/theme/theme.css" />
-    <link rel="stylesheet" type="text/css" href="../css/planet.css" />
+          href="http://getbootstrap.com/examples/theme/theme.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/planet.css"/>
     <script src="../js/ie-emulation-modes-warning.js"></script>
 </head>
 <body>
 <span><p>Hello ! <a th:text="${joueur}"/></p></span>
 
 <div class="container">
-    <form action="#" th:action="@{/universe/planet/planetManagement}" method="get">
-        <table align="center">
-            <tr th:each="Planete : ${planeteList}">
+    <form action="#" th:action="@{/universe/planet/exploration}" method="post">
+        <span>
+        <div class="container jumbotron">
+            <table align="center">
+                <tr th:each="Planete : ${planeteList}">
                     <td th:text="Planete">
-                        <button class = "btn btn-primary btn-block">
-                    <a th:text="${Planete.getId()}"></a>
-                        </button>
+                        <input type ="submit" class = "btn btn-primary" name = "chosenPlanet" th:value="${Planete}"/>
                     </td>
-            </tr>
-        </table>
+                </tr>
+            </table>
+        </div>
+        <div class="container jumbotron">
+            <table align="center">
+                <tr th:each="Unite : ${uniteOrbitale}">
+                    <td th:text="UniteOrbitale :">
+                        <input type ="submit" class = "btn btn-primary" name = "unite" th:value="${#strings.toString(uniteOrbitale.getSimpleName())}"/>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        </span>
     </form>
 </div>
 
