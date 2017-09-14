@@ -26,7 +26,7 @@ public class ExplorationController {
                 (int) session.getAttribute("playerId")
         );
 
-        model.addAttribute("planetes" planeteList);
+        model.addAttribute("planetes", planeteList);
         return "exploration";
     }
 

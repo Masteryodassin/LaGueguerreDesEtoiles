@@ -13,7 +13,7 @@
     <script src="../js/ie-emulation-modes-warning.js"></script>
 </head>
 <body>
-<p>Hello ! <!--<a th:text="${Joueur.getUsername}"/>--></p>
+<span><p>Hello ! <a th:text="${Joueur.getUsername()}"/></p></span>
 
 <div class="container">
     <form action="#" th:action="@{/universe/planet}" method="get">
