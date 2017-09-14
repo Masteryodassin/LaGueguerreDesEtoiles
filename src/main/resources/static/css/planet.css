@@ -1,21 +1,35 @@
 body{
-    background-color: #1b6d85;
+    background-color: #212027;
+
 }
 
 .title{
     color: whitesmoke;
     font-size: xx-large;
-    display: flex;
-    align-content: center;
 
 }
-.container{
-    margin-top: 250px;
-    display: -webkit-box;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: -webkit-flex;
-    display: flex;
+
+.planete{
+    margin-top: 50px;
+    color: whitesmoke;
+    font-size: x-large;
+    font-weight: 400;
+    align-content: flex-start;
     align-items: center;
+}
+
+.image{
+    margin-top: -250px;
+    margin-left: -200px;
+}
+.container{
+    display: flex;
+    flex-direction: column-reverse;
     justify-content: center;
+    align-content: center;
+    align-items: center;
+}
+.btn{
+    background-color: #ECB837;
+    color: black;
 }
