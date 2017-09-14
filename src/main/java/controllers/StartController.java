@@ -34,6 +34,7 @@ public class StartController {
         joueur = startSevice.createPlayer(userName);
         model.addAttribute("joueur", joueur);
         model.addAttribute("universe", univers);
+        session.setAttribute("univers", univers);
         session.setAttribute("id", joueur.getId());
         session.setAttribute("joueur", joueur);
 

@@ -14,19 +14,31 @@ import java.util.List;
 @Service
 public class StartService {
 
-    PlanetMock planetMock = new PlanetMock();
+    private PlanetMock planetMock = new PlanetMock();
+    private List<Planete> planetes = new ArrayList<>();
+
 
     public Univers createUniverse(){
-        List<Planete> planetes = new ArrayList<>();
-        planetes.add(planetMock.planete1);
-        planetes.add(planetMock.planete2);
+
+        this.planetes.add(planetMock.planete1);
+        this.planetes.add(planetMock.planete2);
         Univers univers = new Univers(planetes);
         return univers;
     }
 
     public Joueur createPlayer(String userName){
+
         Joueur joueur = new Joueur(1);
+        joueur.setId(1);
         joueur.setUsername(userName);
+
+        for (Planete planete : planetes) {
+            if (planete.getPlayerId() != joueur.getId()){
+                planetes.remove(planete);
+            }
+        }
+
+        joueur.setPlanetes(planetes);
         return joueur;
     }
 }
