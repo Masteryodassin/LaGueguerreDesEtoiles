@@ -13,11 +13,11 @@
     <script src="../js/ie-emulation-modes-warning.js"></script>
 </head>
 <body>
-<span><p>Hello ! <a th:text="${username}"/></p></span>
+<span ><p class="title">Hello  <a th:value="${userName}"/> Voici les planètes de ton univers !</p></span>
 
 <div class="container">
     <form action="#" th:action="@{/universe/planet}" method="post">
-    <table align="center">
+    <table>
         <tr th:each="Planete : ${planeteList}">
                 <td th:text="Planete"></td>
                 <td><input type ="submit" class = "btn btn-primary" name = "planetId" th:value="${Planete.getId()}" />
