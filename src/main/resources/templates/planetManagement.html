@@ -14,7 +14,19 @@
 </head>
 <body>
 <p>Hello !</p>
+<div class="container">
+    <table align="left">
+        <tr th:each="Unite:${unites}">
+                <td th:text="${#strings.toString(Unite.getClass().getSimpleName())}"></td>
 
+        </tr>
+    </table>
+</div>
+<div class="container">
+    <p> Espace disponible</p>
+    <button type="button">Ajouter une unité</button>
+
+</div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
