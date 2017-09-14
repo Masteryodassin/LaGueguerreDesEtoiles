@@ -17,7 +17,7 @@ import javax.servlet.http.HttpSession;
 public class StartController {
 
     @Autowired
-    private StartService startSevice;
+    private StartService startService;
 
     private Joueur joueur;
     private Univers univers;
@@ -30,13 +30,14 @@ public class StartController {
     @RequestMapping(value = "/start", method = RequestMethod.POST)
     public String startGame (@RequestParam(value= "userName") String userName, Model model, HttpSession session){
 
-        univers = startSevice.createUniverse();
-        joueur = startSevice.createPlayer(userName);
+        univers = startService.createUniverse();
+        joueur = startService.createPlayer(userName);
         model.addAttribute("joueur", joueur);
         model.addAttribute("universe", univers);
         session.setAttribute("univers", univers);
         session.setAttribute("id", joueur.getId());
         session.setAttribute("joueur", joueur);
+        session.setAttribute("username", joueur.getUsername());
 
 
         return "redirect:universe/planet";

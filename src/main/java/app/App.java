@@ -8,7 +8,6 @@ import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
 @ComponentScan(basePackages = {"controllers", "entities", "services"})
-@EnableAutoConfiguration
 public class App {
 
     public static void main(String[] args) {
