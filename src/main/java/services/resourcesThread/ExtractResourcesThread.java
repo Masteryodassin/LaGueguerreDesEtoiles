@@ -7,6 +7,7 @@ import entities.unite.resource.recolte.MineOr;
 import entities.unite.resource.recolte.UsinePlutonium;
 import entities.univers.Planete;
 import entities.utils.Constantes;
+import org.springframework.stereotype.Service;
 
 
 public class ExtractResourcesThread <T extends Unite> implements Runnable{
