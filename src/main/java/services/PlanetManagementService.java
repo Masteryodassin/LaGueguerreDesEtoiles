@@ -17,7 +17,6 @@ public class PlanetManagementService {
 
 
     public List<Unite> getUniteByPlanet(int joueurId){
-        planete = planeteMock.planete1;
         List<Unite> unites = planete.getUnites();
 
         return unites;
