@@ -19,6 +19,7 @@
         <tr th:each="Planete : ${planeteList}">
            <button class = "btn btn-primary btn-block">
             <td th:text="Planete"></td>
+            <td><a th:text="${Planete.getId()}"></a></td>
            </button>
         </tr>
     </table>

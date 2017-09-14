@@ -8,6 +8,15 @@ public class Hangar extends Unite {
     private int stockFer;
     private int stockPlutonium;
 
+
+    public Hangar(){
+        this.setStockFer(0);
+        this.setStockOr(0);
+        this.setStockPlutonium(0);
+    }
+
+    ////////////////////////// Getters and Setters ///////////////////////////
+
     public int getStockOr() {
         return stockOr;
     }
@@ -31,4 +40,5 @@ public class Hangar extends Unite {
     public void setStockPlutonium(int stockPlutonium) {
         this.stockPlutonium = stockPlutonium;
     }
+
 }
