@@ -6,6 +6,7 @@ import entities.univers.Planete;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import services.PlanetService;
@@ -27,5 +28,16 @@ public class PlanetController {
 
         return "planet";
     }
+
+
+    @RequestMapping(value = "universe/{id}",method = RequestMethod.GET)
+    public String getPlanetId (Model model, HttpSession session, @PathVariable("id") int planetId){
+        session.setAttribute("planetId",planetId);
+
+        String redirect = "redirect:planet/planetManagement";
+        return redirect;
+
+    }
+
 
 }

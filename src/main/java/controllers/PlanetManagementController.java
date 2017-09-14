@@ -4,6 +4,9 @@ package controllers;
 import com.sun.org.apache.xpath.internal.operations.Mod;
 import entities.Mock.PlanetMock;
 import entities.unite.Unite;
+import entities.univers.Joueur;
+import entities.univers.Planete;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -11,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import services.PlanetManagementService;
+import services.PlanetService;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
@@ -21,15 +25,19 @@ public class PlanetManagementController {
 
     private PlanetManagementService planetManagementService;
 
+    @Autowired
+    private PlanetService planetService;
 
     @RequestMapping(value = "/universe/planet/planetManagement", method = RequestMethod.GET)
     public String getUnite (Model model, HttpSession session){
-        int joueurId = (int) session.getAttribute("id");
-        List<Unite> unites = planetManagementService.getUniteByPlanet(joueurId);
-        model.addAttribute("Unites", unites);
+        int planetId = (int) session.getAttribute("planetId");
+        Joueur joueur = (Joueur) session.getAttribute("joueur");
 
+        Planete planete = planetService.getById(planetId, joueur);
+        model.addAttribute("planete", planete);
+        List<Unite> unites = planete.getUnites();
 
-        return "redirec: universe/planet/planetManagement";
+        return "planetManagement";
 
     }
 

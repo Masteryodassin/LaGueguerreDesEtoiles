@@ -33,10 +33,16 @@ public class PlanetService {
 
     public Planete getById(int id, Joueur joueur) {
 
-        planete = joueur.getPlanetes().stream().
-                filter(p -> planete.getPlayerId() == id).findAny().get();
+        Planete pr = null;
+    for (Planete p : joueur.getPlanetes()) {
+        if (p.getPlayerId() == id) {
+            pr = p;
+        }
+    }
+        /*planete = joueur.getPlanetes().stream().
+                filter(p -> planete.getPlayerId() == id).findAny().get();*/
 
-        return planete;
+        return pr;
     }
 
 

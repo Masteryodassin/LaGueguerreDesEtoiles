@@ -16,12 +16,12 @@
 <p>Hello ! <!--<a th:text="${Joueur.getUsername}"/>--></p>
 
 <div class="container">
-    <form action="#" th:action="@{/universe/planet/planetManagement}" method="get">
+    <form action="#" th:action="@{/universe/planet}" method="get">
     <table align="center">
         <tr th:each="Planete : ${planeteList}">
            <button class = "btn btn-primary btn-block">
             <td th:text="Planete"></td>
-            <td><a th:text="${Planete.getId()}"></a></td>
+            <td><a th:href= "${Planete.getId()}" th:text="${Planete.getId()}"></a></td>
            </button>
         </tr>
     </table>

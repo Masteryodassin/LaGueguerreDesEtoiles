@@ -12,15 +12,11 @@ import java.util.List;
 public class PlanetManagementService {
 
     private Planete planete;
-    private Unite unite;
-    private PlanetMock planeteMock = new PlanetMock();
 
 
-    public List<Unite> getUniteByPlanet(int id){
-        planete = planeteMock.planete1;
-        List<Unite> unites = new ArrayList<>();
 
-        return unites;
+    public boolean canBuid (){
+    return true;
     }
 
 }
