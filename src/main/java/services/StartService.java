@@ -28,17 +28,19 @@ public class StartService {
 
     public Joueur createPlayer(String userName){
 
+        List<Planete> planetesJoueur = new ArrayList<>();
+
         Joueur joueur = new Joueur(1);
         joueur.setId(1);
         joueur.setUsername(userName);
 
-        for (Planete planete : planetes) {
-            if (planete.getPlayerId() != joueur.getId()){
-                planetes.remove(planete);
+        for (Planete planete : this.planetes) {
+            if (planete.getPlayerId() == joueur.getId()){
+                planetesJoueur.add(planete);
             }
         }
 
-        joueur.setPlanetes(planetes);
+        joueur.setPlanetes(planetesJoueur);
         return joueur;
     }
 }
