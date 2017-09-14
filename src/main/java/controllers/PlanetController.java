@@ -30,11 +30,11 @@ public class PlanetController {
     }
 
 
-    @RequestMapping(value = "universe/planet/{id}",method = RequestMethod.GET)
+    @RequestMapping(value = "universe/{id}",method = RequestMethod.GET)
     public String getPlanetId (Model model, HttpSession session, @PathVariable("id") int planetId){
         session.setAttribute("planetId",planetId);
 
-        String redirect = "redirect: universe/planet/planetManagement";
+        String redirect = "redirect:planet/planetManagement";
         return redirect;
 
     }
