@@ -36,6 +36,10 @@ public class PlanetManagementController {
     private String message;
     private UniteTypeList uniteTypeList;
     List<Unite> unites;
+    int fer = 0;
+    int Or = 0;
+    int plutonium = 0;
+    int dispo = 0;
 
     @RequestMapping(value = "universe/planetManagement", method = RequestMethod.GET)
     public String getUnite(Model model, HttpSession session) {
@@ -48,6 +52,24 @@ public class PlanetManagementController {
         this.unites = planete.getUnites();
         this.message = "bienvenue sur la planete" + String.valueOf(planetId);
 
+        this.dispo = planetManagementService.getAvailableSpace(planete);
+
+        for (Unite united : planete.getUnites()
+                ) {
+            if (united instanceof Hangar){
+                hangar = (Hangar) united;
+
+               this.Or = hangar.getStockOr();
+               this.fer = hangar.getStockFer();
+               this.plutonium = hangar.getStockPlutonium();
+            }
+
+        }
+
+        model.addAttribute("dispo", dispo);
+        model.addAttribute("Or", Or);
+        model.addAttribute("Fer", fer);
+        model.addAttribute("Plutonium", plutonium);
         model.addAttribute("uniteTypes", uniteTypeList.unites);
         model.addAttribute("uniteOrbitaleTypes", uniteTypeList.uniteOrbitales);
         model.addAttribute("planete", planete);
@@ -98,14 +120,32 @@ public class PlanetManagementController {
                 this.planete = planetManagementService.createUnite(unite, planete);
                 this.joueur.getPlanetes().add(planete);
 
+                for (Unite united : planete.getUnites()
+                        ) {
+                    if (united instanceof Hangar){
+                        hangar = (Hangar) united;
+
+                        this.Or = hangar.getStockOr();
+                        this.fer = hangar.getStockFer();
+                        this.plutonium = hangar.getStockPlutonium();
+                    }
+
+                }
+
                 message = unite.getClass().getSimpleName() + " batie avec succes";
             }
         } else {
             message = "vous devez d'abord construire un hangar pour produire des unités";
         }
 
+        this.dispo = planetManagementService.getAvailableSpace(planete);
+
         session.removeAttribute("joueur");
         session.setAttribute("joueur", joueur);
+        model.addAttribute("dispo", dispo);
+        model.addAttribute("Or", Or);
+        model.addAttribute("Fer", fer);
+        model.addAttribute("Plutonium", plutonium);
         model.addAttribute("uniteTypes", uniteTypeList.unites);
         model.addAttribute("uniteOrbitaleTypes", uniteTypeList.uniteOrbitales);
         model.addAttribute("planete", planete);

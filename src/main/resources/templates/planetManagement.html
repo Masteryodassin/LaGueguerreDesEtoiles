@@ -29,28 +29,30 @@
             <td th:text="${#strings.toString(Unite.getClass().getSimpleName())}"></td>
         </tr>
     </table>
-<<<<<<< HEAD
-</div>
-<form action="#" th:action="@{/universe/planetManagement}" method="post">
-    <span>
-    <table class = "dropdown-menu"><h2>Unite</h2>
-=======
+
         </div>
         <div class="ressources">
             <h3 class="titre1">Vos ressources :</h3>
+            <p th:text="${Fer}"></p>
+            <p th:text="${Or}"></p>
+            <p th:text="${Plutonium}"></p>
+        </div>
+        <div class = "dispo">
+            <h3 class = "titre1">Places Disponibles :</h3>
+            <p th:text="${dispo}"></p>
         </div>
 
     </div>
 
 
-<form action="#" th:action="@{/universe/planet/construction}" method="post">
+<form action="#" th:action="@{/universe/planetManagement}" method="post">
 
     <p class="titre2">Choisissez une unité à construire :</p>
     <span class="construction">
 
         <div class="container1">
     <table class = "dropdown-menu"><h3>Unites terrestres</h3>
->>>>>>> dev2
+
         <tr th:each="Unite : ${uniteTypes}">
             <input type="submit" class="btn btn-primary" name="UniteType"
                    th:value="${#strings.toString(Unite.getClass().getSimpleName())}"/>
