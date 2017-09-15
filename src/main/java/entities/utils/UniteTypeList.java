@@ -16,9 +16,9 @@ import java.util.List;
 
 public class UniteTypeList {
 
-    public static List<Unite> unites = new ArrayList<>();
-    public static List<UniteOrbitale> uniteOrbitales = new ArrayList<>();
-    Unite unite;
+    public List<Unite> unites = new ArrayList<>();
+    public List<UniteOrbitale> uniteOrbitales = new ArrayList<>();
+
 
     public UniteTypeList(){
 

@@ -2,10 +2,10 @@ package controllers;
 
 
 import entities.unite.Unite;
-import entities.unite.orbitale.UniteOrbitale;
 import entities.unite.resource.Hangar;
 import entities.univers.Joueur;
 import entities.univers.Planete;
+import entities.utils.UniteTypeList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,10 +16,7 @@ import services.PlanetManagementService;
 import services.PlanetService;
 
 import javax.servlet.http.HttpSession;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
 
 
 @Controller
@@ -37,26 +34,31 @@ public class PlanetManagementController {
     private int planetId;
     private Joueur joueur;
     private String message;
+    private UniteTypeList uniteTypeList;
 
     @RequestMapping(value = "/universe/planet/planetManagement", method = RequestMethod.GET)
     public String getUnite (Model model, HttpSession session){
 
         planetId = (int) session.getAttribute("planetId");
         joueur = (Joueur) session.getAttribute("joueur");
+        uniteTypeList = new UniteTypeList();
 
         planete = planetService.getById(planetId, joueur);
-        model.addAttribute("planete", planete);
-
         List<Unite> unites = planete.getUnites();
+        message = "bienvenue sur la planete" + String.valueOf(planetId);
+
+        model.addAttribute("uniteTypes", uniteTypeList.unites);
+        model.addAttribute("uniteOrbitaleTypes", uniteTypeList.uniteOrbitales);
+        model.addAttribute("planete", planete);
         model.addAttribute("unites", unites);
+        model.addAttribute("message", message);
 
         return "planetManagement";
-
     }
 
 
     @RequestMapping(value = "/universe/planet/construction", method = RequestMethod.POST)
-    public String buildUnit(Model model, HttpSession session, @RequestParam ("typeUnite") Unite unite){
+    public String buildUnit(Model model, HttpSession session, @RequestParam ("Unite") Unite unite){
 
         Hangar hangar = new Hangar();
 
@@ -99,7 +101,7 @@ public class PlanetManagementController {
 
 
     @RequestMapping(value = "/universe/planet/destruction", method = RequestMethod.DELETE)
-    public String deleteUnit(Model model, HttpSession session, @RequestParam ("unite") Unite unite){
+    public String deleteUnit(Model model, HttpSession session, @RequestParam ("uniteType") Unite unite){
 
         planetId = (int) session.getAttribute("planetId");
         joueur = (Joueur) session.getAttribute("joueur");
@@ -114,7 +116,4 @@ public class PlanetManagementController {
        message = "l'unite choisie ne peut être détruite";
         return "planetManagement";
     }
-
-
-
 }
