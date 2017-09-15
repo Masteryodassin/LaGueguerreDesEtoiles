@@ -9,31 +9,59 @@
           href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
     <link rel="stylesheet"
           href="http://getbootstrap.com/examples/theme/theme.css" />
-    <link rel="stylesheet" type="text/css" href="../css/planetManagement.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/planetManagement.css" />
     <script src="../js/ie-emulation-modes-warning.js"></script>
 </head>
-<body>
-<p>Hello !</p>
+<body >
+
 <div class="container">
+    <div class="titreImage">
+        <img src="../../fonts/etoile4.png"/>
+        <h2 style="align-self: center" th:text="${message}"></h2>
+
+    </div>
+    <div class="uniteRessources">
+        <div class="unite">
+    <h3 class="titre1">Vos unités :</h3>
+
     <table align="left">
         <tr th:each="Unite:${unites}">
-                <td th:text="${#strings.toString(Unite.getClass().getSimpleName())}"></td>
+            <td th:text="${#strings.toString(Unite.getClass().getSimpleName())}"></td>
         </tr>
     </table>
-</div>
+        </div>
+        <div class="ressources">
+            <h3 class="titre1">Vos ressources :</h3>
+        </div>
+
+    </div>
+
+
 <form action="#" th:action="@{/universe/planet/construction}" method="post">
 
-    <ul class = "dropdown-menu"><h2>Unite</h2>
-        <li th:each="UniteType : ${UniteTypes}">
-            <input type ="submit" class = "btn btn-primary" th:value="${#strings.toString(UniteType.getClass().getSimpleName())}">
-        <li role = "separator" class = "divider"></li>
-    </ul>
-    <ul class = "dropdown-menu"><h2>Unite Orbitale</h2>
-        <li th:each="UniteType : ${UniteOrbitaleTypes}">
-            <input type ="submit" class = "btn btn-primary" th:value="${#strings.toString(UniteOrbitaleType.getClass().getSimpleName())}">
-        <li role = "separator" class = "divider"></li>
-    </ul>
+    <p class="titre2">Choisissez une unité à construire :</p>
+    <span class="construction">
+
+        <div class="container1">
+    <table class = "dropdown-menu"><h3>Unites terrestres</h3>
+        <tr th:each="Unite : ${uniteTypes}">
+            <input type="submit" class="btn btn-primary" name="UniteType"
+                   th:value="${#strings.toString(Unite.getClass().getSimpleName())}"/>
+        </tr>
+    </table>
+            </div>
+            <div class="container2">
+    <table class = "dropdown-menu"><h3>Unites Orbitales</h3>
+        <tr th:each="Unite : ${uniteOrbitaleTypes}">
+            <input type="submit" class="btn btn-primary" name="UniteType"
+                   th:value="${#strings.toString(Unite.getClass().getSimpleName())}"/>
+        </tr>
+    </table>
+                </div>
+    </span>
 </form>
+
+</div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script>

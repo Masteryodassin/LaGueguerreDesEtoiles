@@ -33,6 +33,7 @@ public class PlanetController {
 
     @RequestMapping(value = "universe/planet",method = RequestMethod.POST)
     public String getPlanetId (Model model, HttpSession session, @RequestParam("planetId") int planetId){
+        planetId = planetId--;
         session.setAttribute("planetId",planetId);
 
         String redirect = "redirect:planet/planetManagement";
