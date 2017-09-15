@@ -13,11 +13,12 @@
     <script src="../js/ie-emulation-modes-warning.js"></script>
 </head>
 <body>
-<span><p>Hello ! <a th:text="${username}"/></p></span>
-
 <div class="container">
+    <div class="image"><img src="../fonts/etoile.png"/></div>
+
+<div class="planete">
     <form action="#" th:action="@{/universe/planet}" method="post">
-    <table align="center">
+    <table>
         <tr th:each="Planete : ${planeteList}">
                 <td th:text="Planete"></td>
                 <td><input type ="submit" class = "btn btn-primary" name = "planetId" th:value="${Planete.getId()}" />
@@ -25,6 +26,11 @@
         </tr>
     </table>
     </form>
+
+</div>
+    <div class="title">
+        <span><p>Hello  <a th:value="${userName}"/> Voici les planètes de ton univers !</p></span>
+    </div>
 </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>

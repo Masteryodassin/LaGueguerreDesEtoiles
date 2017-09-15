@@ -2,15 +2,23 @@ body{
     background-image: url(../fonts/background.jpeg);
 }
 
+.form-group{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 22%;
+    width: 50%;
+}
+
 #label{
-    margin-left: 500px;
+
     margin-top: 200px;
     font-size: xx-large;
     color: whitesmoke;
 }
 
 #userName{
-    margin-left: 550px;
+
     margin-top: 20px;
     border-color: whitesmoke;
     line-height: 1.25;
@@ -18,15 +26,16 @@ body{
 }
 
 #submit{
-    margin-left: 590px;
     margin-top: 50px;
 }
 .btn {
+    height: 40px;
+    width: 100px;
     color: black;
     background-color: whitesmoke;
     border-color: whitesmoke;
     display: inline-block;
-    font-weight: 400;
+    font-weight: 600;
     text-align: center;
     white-space: nowrap;
     vertical-align: middle;

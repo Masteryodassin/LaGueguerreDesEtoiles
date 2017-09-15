@@ -1,0 +1,45 @@
+body{
+    background-color: #212027;
+
+}
+.container{
+    display: flex;
+    flex-direction: column;
+    color: whitesmoke;
+    align-content: space-around;
+}
+
+
+.container1{
+    display: flex;
+    flex-direction: column;
+}
+.container2{
+    display: flex;
+    flex-direction: column;
+}
+.construction{
+    display: flex;
+    justify-content: space-around;
+}
+.titre1{
+    margin-top: 100px;
+    font-size: x-large;
+}
+.titre2{
+    margin-top: 100px;
+    font-size: x-large;
+    color:#ECB837 ;
+}
+.uniteRessources{
+    display: flex;
+    justify-content: space-around;
+}
+.btn{
+    background-color: #ECB837;
+    color: black;
+}
+.titreImage{
+    display: flex;
+    justify-content: flex-start;
+}

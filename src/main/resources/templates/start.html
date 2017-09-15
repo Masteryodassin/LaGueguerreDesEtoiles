@@ -15,15 +15,17 @@
 <body>
 
 
+
 <!--/*@thymesVar id="userName" type="entities"*/-->
 <form action="#" th:action="@{/start}" method="post">
     <div class="form-group">
         <p id="label" for="userName">Entrez votre nom  </p>
-        <input type="text" id="userName" name="userName" placeholder="Nom" />
-        <input id= "submit" class="btn btn-primary" type="submit" value="Jouer !"/>
+        <input type="text" id="userName" name="userName" placeholder="Nom" required="required" oninvalid="this.setCustomValidity('Saisissez votre nom !')" oninput="setCustomValidity('')"/>
+        <input id= "submit" class="btn btn-primary btn-lg" type="submit" value="Jouer !"/>
     </div>
 
 </form>
+
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
