@@ -22,6 +22,7 @@ public class Croiseur extends UniteOrbitale implements IUniteAttaquante{
         this.setAttaque(Constantes.ATTAQUECROISEUR);
         this.setTempProduction(Constantes.TEMPPROD);
     }
+    public Croiseur(){}
 
     @Override
     public void setAttaque(int a) {

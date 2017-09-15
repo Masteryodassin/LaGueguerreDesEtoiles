@@ -18,4 +18,5 @@ public class Transporteur extends UniteOrbitale{
         this.setVitesse(Constantes.VITESSETRANSPORTEUR);
         this.setTempProduction(Constantes.TEMPPROD);
     }
+    public Transporteur(){}
 }

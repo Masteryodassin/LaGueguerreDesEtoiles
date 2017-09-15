@@ -18,15 +18,22 @@
     <table align="left">
         <tr th:each="Unite:${unites}">
                 <td th:text="${#strings.toString(Unite.getClass().getSimpleName())}"></td>
-
         </tr>
     </table>
 </div>
-<div class="container">
-    <p> Espace disponible</p>
-    <button type="button">Ajouter une unité</button>
+<form action="#" th:action="@{/universe/planet/construction}" method="post">
 
-</div>
+    <ul class = "dropdown-menu"><h2>Unite</h2>
+        <li th:each="UniteType : ${UniteTypes}">
+            <input type ="submit" class = "btn btn-primary" th:value="${#strings.toString(UniteType.getClass().getSimpleName())}">
+        <li role = "separator" class = "divider"></li>
+    </ul>
+    <ul class = "dropdown-menu"><h2>Unite Orbitale</h2>
+        <li th:each="UniteType : ${UniteOrbitaleTypes}">
+            <input type ="submit" class = "btn btn-primary" th:value="${#strings.toString(UniteOrbitaleType.getClass().getSimpleName())}">
+        <li role = "separator" class = "divider"></li>
+    </ul>
+</form>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script>

@@ -25,6 +25,8 @@ public class Chasseur extends UniteOrbitale implements IUniteAttaquante{
 
     }
 
+    public Chasseur(){}
+
     @Override
     public void setAttaque(int a ) {
         this.attaque = a;
