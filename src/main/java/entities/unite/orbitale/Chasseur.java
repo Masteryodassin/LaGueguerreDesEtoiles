@@ -9,12 +9,14 @@ public class Chasseur extends UniteOrbitale implements IUniteAttaquante{
 
     private int attaque;
 
-    public Chasseur(int x , int y){
+    public Chasseur(){
         super();
+/*
 
         this.setCoordX(x);
         this.setCoordY(y);
 
+*/
         this.setCountFer(Couts.FERCHASSEUR);
         this.setCountOr(Couts.ORCHASSEUR);
         this.setCountPlutonium(Couts.PLUTONIUMCHASSEUR);
@@ -25,7 +27,7 @@ public class Chasseur extends UniteOrbitale implements IUniteAttaquante{
 
     }
 
-    public Chasseur(){}
+
 
     @Override
     public void setAttaque(int a ) {

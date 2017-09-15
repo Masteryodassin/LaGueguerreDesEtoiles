@@ -22,7 +22,6 @@ import java.util.List;
 @Controller
 public class PlanetManagementController {
 
-    private Hangar hangar;
 
     @Autowired
     private PlanetService planetService;
@@ -31,6 +30,7 @@ public class PlanetManagementController {
     private PlanetManagementService planetManagementService;
 
     private Planete planete;
+    private Hangar hangar;
     private int planetId;
     private Joueur joueur;
     private String message;
@@ -103,15 +103,15 @@ public class PlanetManagementController {
                 message = "plus de place disponible";
             }
 
-            if (!planete.enoughIron(unite)) {
+            else if (!planete.enoughIron(unite)) {
 
                 message = message + "& pas assez de fer";
             }
-            if (!planete.enoughGold(unite)) {
+            else if (!planete.enoughGold(unite)) {
 
                 message = message + "& pas assez d'or";
             }
-            if (!planete.enoughPlutonium(unite)) {
+            else if (!planete.enoughPlutonium(unite)) {
 
                 message = message + "& pas assez de fer";
             } else {
@@ -130,6 +130,7 @@ public class PlanetManagementController {
                         this.plutonium = hangar.getStockPlutonium();
                     }
 
+
                 }
 
                 message = unite.getClass().getSimpleName() + " batie avec succes";
@@ -140,7 +141,7 @@ public class PlanetManagementController {
 
         this.dispo = planetManagementService.getAvailableSpace(planete);
 
-        session.removeAttribute("joueur");
+
         session.setAttribute("joueur", joueur);
         model.addAttribute("dispo", dispo);
         model.addAttribute("Or", Or);
@@ -161,14 +162,31 @@ public class PlanetManagementController {
         planetId = (int) session.getAttribute("planetId");
         joueur = (Joueur) session.getAttribute("joueur");
 
-        planete = planetService.getById(planetId, joueur);
+        this.planete = planetService.getById(planetId, joueur);
 
-        if (planetManagementService.deleteUnite(unite, planete)) {
+        this.joueur.getPlanetes().remove(planete);
+
+        if (!planete.getUnites().isEmpty()) {
 
             message = "Unite detruite avec succes";
+            planete.setUnites(planetManagementService.deleteUnite(unite, planete));
+            this.joueur.getPlanetes().add(planete);
         }
 
         message = "l'unite choisie ne peut être détruite";
+
+
+        session.setAttribute("joueur", joueur);
+        model.addAttribute("dispo", dispo);
+        model.addAttribute("Or", Or);
+        model.addAttribute("Fer", fer);
+        model.addAttribute("Plutonium", plutonium);
+        model.addAttribute("uniteTypes", uniteTypeList.unites);
+        model.addAttribute("uniteOrbitaleTypes", uniteTypeList.uniteOrbitales);
+        model.addAttribute("planete", planete);
+        model.addAttribute("unites", unites);
+        model.addAttribute("message", message);
+
         return "planetManagement";
     }
 }

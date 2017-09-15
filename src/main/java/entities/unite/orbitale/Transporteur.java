@@ -5,11 +5,13 @@ import entities.utils.Couts;
 
 public class Transporteur extends UniteOrbitale{
 
-    public Transporteur(int x , int y){
+    public Transporteur(){
         super();
+/*
 
         this.setCoordX(x);
         this.setCoordY(y);
+*/
 
         this.setCountFer(Couts.FERTRANSPORTEUR);
         this.setCountOr(Couts.ORTRANSPORTEUR);
@@ -18,5 +20,5 @@ public class Transporteur extends UniteOrbitale{
         this.setVitesse(Constantes.VITESSETRANSPORTEUR);
         this.setTempProduction(Constantes.TEMPPROD);
     }
-    public Transporteur(){}
+
 }

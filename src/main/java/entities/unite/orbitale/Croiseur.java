@@ -8,11 +8,13 @@ public class Croiseur extends UniteOrbitale implements IUniteAttaquante{
 
     private int attaque;
 
-    public Croiseur (int x, int y){
+    public Croiseur (){
         super();
 
+/*
         this.setCoordX(x);
         this.setCoordY(y);
+*/
 
         this.setCountFer(Couts.FERCROISEUR);
         this.setCountOr(Couts.ORCROISEUR);
@@ -22,7 +24,7 @@ public class Croiseur extends UniteOrbitale implements IUniteAttaquante{
         this.setAttaque(Constantes.ATTAQUECROISEUR);
         this.setTempProduction(Constantes.TEMPPROD);
     }
-    public Croiseur(){}
+
 
     @Override
     public void setAttaque(int a) {

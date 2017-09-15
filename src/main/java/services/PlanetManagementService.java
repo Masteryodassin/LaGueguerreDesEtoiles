@@ -83,15 +83,15 @@ public class PlanetManagementService<T extends Unite> {
         return unite;
     }
 
-    public boolean deleteUnite(T unite, Planete planete) {
+    public List<Unite> deleteUnite(T unite, Planete planete) {
 
         if (planete.getUnites().contains(unite)) {
             planete.getUnites().remove(unite);
 
-            return true;
+            return planete.getUnites();
         }
 
-        return false;
+        return null;
     }
 
     public Hangar getFullHangar(Planete planete) {

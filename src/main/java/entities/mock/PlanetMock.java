@@ -29,7 +29,7 @@ public class PlanetMock {
         planete1.setFer(100);
         planete1.setOr(100);
         planete1.setPlutonium(100);
-        planete1.setPlanetSize(50);
+        planete1.setPlanetSize(10);
         planete1.setOccuped(true);
         planete1.setUnites(unites);
 
