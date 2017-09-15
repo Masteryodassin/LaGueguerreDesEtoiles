@@ -20,7 +20,7 @@
 <form action="#" th:action="@{/start}" method="post">
     <div class="form-group">
         <p id="label" for="userName">Entrez votre nom  </p>
-        <input type="text" id="userName" name="userName" placeholder="Nom" />
+        <input type="text" id="userName" name="userName" placeholder="Nom" required="required" oninvalid="this.setCustomValidity('Saisissez votre nom !')" oninput="setCustomValidity('')"/>
         <input id= "submit" class="btn btn-primary btn-lg" type="submit" value="Jouer !"/>
     </div>
 
