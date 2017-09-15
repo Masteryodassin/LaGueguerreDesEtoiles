@@ -18,4 +18,5 @@ public class Scout extends UniteOrbitale{
         this.setVitesse(Constantes.VITESSESCOUT);
         this.setTempProduction(Constantes.TEMPPROD);
     }
+    public Scout(){}
 }

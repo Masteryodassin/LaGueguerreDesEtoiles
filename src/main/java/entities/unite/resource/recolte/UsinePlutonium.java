@@ -1,4 +1,11 @@
 package entities.unite.resource.recolte;
 
-public class UsinePlutonium {
+import entities.unite.Unite;
+import entities.utils.Constantes;
+
+public class UsinePlutonium extends Unite {
+    public UsinePlutonium(){
+
+        this.setHitPoint(Constantes.HPUSINEPLUTONIUM);
+    }
 }
