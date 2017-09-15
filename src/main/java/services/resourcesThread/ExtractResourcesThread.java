@@ -32,11 +32,13 @@ public class ExtractResourcesThread <T extends Unite> implements Runnable{
             }catch (InterruptedException ie){
                 System.out.println("unexpected interruption exception");
             }
-
-            if (!this.planete.getUnites().stream()
-                    .anyMatch(u -> Unite.class.equals(MineFer.class))){
-                isFer = false;
+            for (Unite unite: planete.getUnites()
+                 ) {
+                if (!unite.getClass().equals(MineFer.class)){
+                    isFer=false;
+                }
             }
+
 
             int resourceLeftOver = planete.getFer() - Constantes.RATIOEXTRACTIONFER;
             int resourceExtracted = hangar.getStockFer() + Constantes.RATIOEXTRACTIONFER;
@@ -52,10 +54,16 @@ public class ExtractResourcesThread <T extends Unite> implements Runnable{
                 System.out.println("unexpected interruption exception");
             }
 
-            if (!this.planete.getUnites().stream()
-                    .anyMatch(u -> Unite.class.equals(MineOr.class))){
-                isOr = false;
+            System.out.println("extraction de " + String.valueOf(Constantes.RATIOEXTRACTIONFER) + "fer");
+
+            for (Unite unite: planete.getUnites()
+                    ) {
+                if (!unite.getClass().equals(MineOr.class)){
+                    isOr=false;
+                }
             }
+
+            System.out.println("extraction de " + String.valueOf(Constantes.RATIOEXTRACTIONOR) + "Or");
 
             int resourceLeftOver = planete.getOr() - Constantes.RATIOEXTRACTIONOR;
             int resourceExtracted = hangar.getStockOr() + Constantes.RATIOEXTRACTIONOR;
@@ -71,9 +79,13 @@ public class ExtractResourcesThread <T extends Unite> implements Runnable{
                 System.out.println("unexpected interruption exception");
             }
 
-            if (!this.planete.getUnites().stream()
-                    .anyMatch(u -> Unite.class.equals(MineOr.class))){
-                isPlutonium = false;
+            System.out.println("extraction de " + String.valueOf(Constantes.RATIOEXTRACTIONPLUTONIUM) + "Plutonium");
+
+            for (Unite unite: planete.getUnites()
+                    ) {
+                if (!unite.getClass().equals(UsinePlutonium.class)){
+                    isPlutonium=false;
+                }
             }
 
             int resourceLeftOver = planete.getPlutonium() - Constantes.RATIOEXTRACTIONPLUTONIUM;

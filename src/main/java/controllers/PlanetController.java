@@ -36,7 +36,7 @@ public class PlanetController {
         planetId = planetId--;
         session.setAttribute("planetId",planetId);
 
-        String redirect = "redirect:planet/planetManagement";
+        String redirect = "redirect:planetManagement";
         return redirect;
 
     }

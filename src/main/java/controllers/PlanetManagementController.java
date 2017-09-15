@@ -22,7 +22,7 @@ import java.util.List;
 @Controller
 public class PlanetManagementController {
 
-   private Hangar hangar;
+    private Hangar hangar;
 
     @Autowired
     private PlanetService planetService;
@@ -35,18 +35,41 @@ public class PlanetManagementController {
     private Joueur joueur;
     private String message;
     private UniteTypeList uniteTypeList;
+    List<Unite> unites;
+    int fer = 0;
+    int Or = 0;
+    int plutonium = 0;
+    int dispo = 0;
 
-    @RequestMapping(value = "/universe/planet/planetManagement", method = RequestMethod.GET)
-    public String getUnite (Model model, HttpSession session){
+    @RequestMapping(value = "universe/planetManagement", method = RequestMethod.GET)
+    public String getUnite(Model model, HttpSession session) {
 
-        planetId = (int) session.getAttribute("planetId");
-        joueur = (Joueur) session.getAttribute("joueur");
+        this.planetId = (int) session.getAttribute("planetId");
+        this.joueur = (Joueur) session.getAttribute("joueur");
         uniteTypeList = new UniteTypeList();
 
-        planete = planetService.getById(planetId, joueur);
-        List<Unite> unites = planete.getUnites();
-        message = "Bienvenue sur la planete" + String.valueOf(planetId);
+        this.planete = planetService.getById(planetId, joueur);
+        this.unites = planete.getUnites();
+        this.message = "bienvenue sur la planete" + String.valueOf(planetId);
 
+        this.dispo = planetManagementService.getAvailableSpace(planete);
+
+        for (Unite united : planete.getUnites()
+                ) {
+            if (united instanceof Hangar){
+                hangar = (Hangar) united;
+
+               this.Or = hangar.getStockOr();
+               this.fer = hangar.getStockFer();
+               this.plutonium = hangar.getStockPlutonium();
+            }
+
+        }
+
+        model.addAttribute("dispo", dispo);
+        model.addAttribute("Or", Or);
+        model.addAttribute("Fer", fer);
+        model.addAttribute("Plutonium", plutonium);
         model.addAttribute("uniteTypes", uniteTypeList.unites);
         model.addAttribute("uniteOrbitaleTypes", uniteTypeList.uniteOrbitales);
         model.addAttribute("planete", planete);
@@ -57,63 +80,95 @@ public class PlanetManagementController {
     }
 
 
-    @RequestMapping(value = "/universe/planet/construction", method = RequestMethod.POST)
-    public String buildUnit(Model model, HttpSession session, @RequestParam ("Unite") Unite unite){
-
-        Hangar hangar = new Hangar();
+    @RequestMapping(value = "universe/planetManagement", method = RequestMethod.POST)
+    public String buildUnit(Model model, HttpSession session, @RequestParam("UniteType") String typeName) {
 
         planetId = (int) session.getAttribute("planetId");
         joueur = (Joueur) session.getAttribute("joueur");
 
-        planete = planetService.getById(planetId, joueur);
+        Unite unite = planetManagementService.getUniteFromName(typeName);
 
-        if (planete.getUnites().contains(hangar)) {
+        boolean b = false;
 
-            if (planetManagementService.createUnite(unite, planete)) {
-
-                message = unite.getClass().getSimpleName() + "batie avec succes";
+        for (Unite united : planete.getUnites()
+             ) {
+            if (united instanceof Hangar){
+                b = true;
             }
-            else {
-                if (!planete.hasRoom()) {
-                    message = "plus de place disponible";
-                }
-
-                if (!planete.enoughIron(unite)) {
-
-                    message = message + "& pas assez de fer";
-                }
-                if (!planete.enoughGold(unite)) {
-
-                    message = message + "& pas assez d'or";
-                }
-                if (!planete.enoughPlutonium(unite)) {
-
-                    message = message + "& pas assez de fer";
-                }
-            }
-
-            message = "vous devez construire un hangar";
 
         }
+        if (b) {
+
+            if (!planete.hasRoom()) {
+                message = "plus de place disponible";
+            }
+
+            if (!planete.enoughIron(unite)) {
+
+                message = message + "& pas assez de fer";
+            }
+            if (!planete.enoughGold(unite)) {
+
+                message = message + "& pas assez d'or";
+            }
+            if (!planete.enoughPlutonium(unite)) {
+
+                message = message + "& pas assez de fer";
+            } else {
+
+                this.joueur.getPlanetes().remove(planete);
+                this.planete = planetManagementService.createUnite(unite, planete);
+                this.joueur.getPlanetes().add(planete);
+
+                for (Unite united : planete.getUnites()
+                        ) {
+                    if (united instanceof Hangar){
+                        hangar = (Hangar) united;
+
+                        this.Or = hangar.getStockOr();
+                        this.fer = hangar.getStockFer();
+                        this.plutonium = hangar.getStockPlutonium();
+                    }
+
+                }
+
+                message = unite.getClass().getSimpleName() + " batie avec succes";
+            }
+        } else {
+            message = "vous devez d'abord construire un hangar pour produire des unités";
+        }
+
+        this.dispo = planetManagementService.getAvailableSpace(planete);
+
+        session.removeAttribute("joueur");
+        session.setAttribute("joueur", joueur);
+        model.addAttribute("dispo", dispo);
+        model.addAttribute("Or", Or);
+        model.addAttribute("Fer", fer);
+        model.addAttribute("Plutonium", plutonium);
+        model.addAttribute("uniteTypes", uniteTypeList.unites);
+        model.addAttribute("uniteOrbitaleTypes", uniteTypeList.uniteOrbitales);
+        model.addAttribute("planete", planete);
+        model.addAttribute("unites", unites);
         model.addAttribute("message", message);
         return "planetManagement";
     }
 
 
-    @RequestMapping(value = "/universe/planet/destruction", method = RequestMethod.DELETE)
-    public String deleteUnit(Model model, HttpSession session, @RequestParam ("uniteType") Unite unite){
+    @RequestMapping(value = "universe/planeteManagement", method = RequestMethod.DELETE)
+    public String deleteUnit(Model model, HttpSession session, @RequestParam("uniteType") Unite unite) {
 
         planetId = (int) session.getAttribute("planetId");
         joueur = (Joueur) session.getAttribute("joueur");
 
         planete = planetService.getById(planetId, joueur);
 
-       if ( planetManagementService.deleteUnite(unite, planete)){
+        if (planetManagementService.deleteUnite(unite, planete)) {
 
-           message = "Unite detruite avec succes";
-       }
+            message = "Unite detruite avec succes";
+        }
 
-       message = "l'unite choisie ne peut être détruite";
+        message = "l'unite choisie ne peut être détruite";
         return "planetManagement";
     }
 }

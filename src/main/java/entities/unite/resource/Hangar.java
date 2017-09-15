@@ -1,6 +1,7 @@
 package entities.unite.resource;
 
 import entities.unite.Unite;
+import entities.utils.Constantes;
 
 public class Hangar extends Unite {
 
@@ -10,9 +11,9 @@ public class Hangar extends Unite {
 
 
     public Hangar(){
-        this.setStockFer(0);
-        this.setStockOr(0);
-        this.setStockPlutonium(0);
+        this.setStockFer(50);
+        this.setStockOr(25);
+        this.setStockPlutonium(10);
     }
 
     ////////////////////////// Getters and Setters ///////////////////////////
