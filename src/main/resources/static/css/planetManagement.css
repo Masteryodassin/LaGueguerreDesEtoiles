@@ -43,3 +43,7 @@ body{
     display: flex;
     justify-content: flex-start;
 }
+.exploration{
+    align-self: center;
+    margin-top: 150px;
+}
