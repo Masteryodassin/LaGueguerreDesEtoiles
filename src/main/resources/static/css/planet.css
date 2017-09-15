@@ -6,6 +6,7 @@ body{
 .title{
     color: whitesmoke;
     font-size: xx-large;
+    align-self: center;
 
 }
 
@@ -14,7 +15,7 @@ body{
     color: whitesmoke;
     font-size: x-large;
     font-weight: 400;
-    align-content: flex-start;
+    align-content: center;
     align-items: center;
 }
 
@@ -28,8 +29,11 @@ body{
     justify-content: center;
     align-content: center;
     align-items: center;
+    color: whitesmoke;
+    font-size: large;
 }
 .btn{
     background-color: #ECB837;
     color: black;
 }
+

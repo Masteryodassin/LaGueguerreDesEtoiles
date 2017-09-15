@@ -14,7 +14,11 @@
 </head>
 <body>
 <div class="container">
-    <div class="image"><img src="../fonts/etoile.png"/></div>
+
+
+    <div class="image">
+        <img src="../fonts/etoile.png"/>
+    </div>
 
 <div class="planete">
     <form action="#" th:action="@{/universe/planet}" method="post">
@@ -28,6 +32,9 @@
     </form>
 
 </div>
+    <div>
+        <p class="title2"> Attaque les planètes ennemies pour agrandir ton univers</p>
+    </div>
     <div class="title">
         <span><p>Hello  <a th:value="${userName}"/> Voici les planètes de ton univers !</p></span>
     </div>
