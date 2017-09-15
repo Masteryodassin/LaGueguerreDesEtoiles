@@ -156,6 +156,15 @@ public class PlanetManagementController {
     }
 
 
+    @RequestMapping(path = "/redirect", method = RequestMethod.GET)
+    public String exploreUnivers(Model model, HttpSession session){
+
+       // session.setAttribute("univers",  );
+        session.setAttribute("joueurId", joueur.getId());
+
+        return "redirect:/universe/planetManagement/exploration";
+    }
+
     @RequestMapping(value = "universe/planeteManagement", method = RequestMethod.DELETE)
     public String deleteUnit(Model model, HttpSession session, @RequestParam("uniteType") Unite unite) {
 

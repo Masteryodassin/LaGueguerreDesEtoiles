@@ -26,13 +26,16 @@ public class ExplorationController {
     private PlanetService planetService;
 
 
-    @RequestMapping(value = "/universe/planet/exploration", method = RequestMethod.GET)
+    @RequestMapping(value = "universe/planetManagement/exploration", method = RequestMethod.GET)
     public String checkDistance (Model model, HttpSession session){
+        int playerId = (int) session.getAttribute("playerId");
+        Univers univers = (Univers) session.getAttribute("univers");
 
-        List<Planete> planeteList = explorationService.getNotOwnedPlanetes(
-                (Univers) session.getAttribute("univers"),
-                (int) session.getAttribute("playerId")
-        );
+        List<Planete> planeteList = explorationService.getNotOwnedPlanetes(univers, playerId);
+             model.addAttribute("planetList", planeteList);
+
+
+
 
         Planete planete = planetService
                 .getById((int) session.getAttribute("planetId"), (Joueur) session.getAttribute("joueur"));

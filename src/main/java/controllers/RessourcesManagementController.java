@@ -23,10 +23,10 @@ public class RessourcesManagementController {
 
     private Planete planete;
 
-    @RequestMapping(value = "/universe/planet/resources", method = RequestMethod.POST)
+    @RequestMapping(value = "/universe/planet/resources", method = RequestMethod.GET)
     public String checkRessources (Model model, HttpSession session){
        int planeteId = (int) session.getAttribute("planeteId");
 
-        return "planet";
+        return "planetManagement";
     }
 }
